@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cc.css">
+    <title>Htmlpage2</title>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+<a href=""></a>
+    <style>
+
+      body{
+
+               background:#266ae9ab;
+           }
+    </style>
+</head>
+<body>
+ <!--MODELLLLLLLLLLLLLLLL -///////////////////////////////////--////////////Alert MODEL////////----////////////////////////////////////////////////////////--////////------>
+<div id="ShowLoader" style="position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 9999; display: flex; 
+   justify-content: center; align-items: center; background-color: gray;  width: 100px; height: 100px; margin: auto auto; border-radius: 25px; opacity: 0.8;
+    visibility: hidden;">   
+   <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+</div>
+
+    <div class="alert" style="position: absolutea; z-index: 999;">
+   <div class="aksour">
+  <b>التسجيل الدخول بنجاح</b>
+ </div>
+       
+<div class="x">
+  <b>تم التسجيل الخروج  بنجاح</b>
+ </div>
+ <div class="s">
+    
+ </div>
+</div>  
+ <!--MODELLLLLLLLLLLLLLLL -///////////////////////////////////--////////////Alert MODEL////////----////////////////////////////////////////////////////////--////////------>
+
+ <!--MODELLLLLLLLLLLLLLLL -///////////////////////////////////--////////////LOGIN MODEL////////----////////////////////////////////////////////////////////--////////------>
+<div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel" >LOGIN</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">UserName</label>
+            <input type="email" class="form-control" id="username-input"  autocomplete="username">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label" >Password</label>
+            <input type="password" class="form-control" id="password-input" autocomplete ="current-password" value=" "></input>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="Login-modal">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!--MODELLLLLLLLLLLLLLLL -///////////////////////////////////--////////////regster MODEL////////----////////////////////////////////////////////////////////--////////------>
+<div class="modal fade" id="rigester-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel" >Register A New User</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Name</label>
+            <input type="email" class="form-control" id="Register-name-input"  autocomplete="username">
+          </div>
+            <label for="recipient-name" class="col-form-label">UserName</label>
+            <input type="email" class="form-control" id="Register-Username-input"  autocomplete="username">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label" >Password</label>
+            <input type="password" class="form-control" id="Register-password-input" autocomplete ="current-password"></input>
+          </div>
+           <div class="mb-3">
+            <label for="message-text" class="col-form-label" >Image</label>
+            <input type="file" class="form-control" id="Register-image-input" autocomplete ="current-password"></input>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="Login-modal" onclick="RegisterName()">Register</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--MODELLLLLLLLLLLLLLLL -///////////////////////////////////--////////////Register MODEL////////----////////////////////////////////////////////////////////--////////------>
+
+<div class="modal fade" id="create-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel" >Create New Post</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"> Title</label>
+            <input type="email" class="form-control" id="UPDATE-INPUT-VALUE"autocomplete="username">
+          </div>
+          <label for="">Body</label>
+           <textarea name="" id="update-Body-textarea" style="width: 100%; height: 100px; border-color: gray; border-radius: 7px; resize: none;">
+                  
+           </textarea>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label" >Image</label>
+            <input type="file" class="form-control" id="Create-New-Image" autocomplete ="current-password"></input>
+          </div> 
+        </form>
+      </div> 
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="Login-modal" onclick="CreateNewPostCliked()">Cretae New Post</button>
+      </div>
+    </div> 
+  </div>
+</div>
+<!--MODELLLLLLLLLLLLLLLL -///////////////////////////////////--////////////Navigtion Bar ////////----////////////////////////////////////////////////////////--////////------>
+
+
+ <div class="container" style="padding-top: 5px;   margin-top: -50px; " >
+      <div style ="display: flex; justify-content: center;">
+       <div class="col-9 ">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary shadow" style="border-radius: 7px;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">AksourHoucine</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        </li>        
+        <li class="nav-item">
+          <a class="nav-link" onclick="ProfileCliikd()" style="cursor: pointer;">Profaile</a>
+        </li>
+        <div style=" position: absolute; right: 0px; display: flex; align-items: center;" id="loginresester">
+          <div style=" display: flex; align-items: center; gap: 10px; margin-right: 20px;" class="MamaLove">
+              <img src="photos/hhh.jpg" alt="" style="width: 38px; height: 38px; border-radius: 50%;position: relative; bottom: 3px;" id="image-input-aksdsour">
+              <h6 style="font-weight: bold; font-size: 18px;" id="username">Aksourhoucine</h6>
+
+          </div>
+            <button class="btn btn-outline-danger" style="visibility:hidden; position: absolute; right: 20px ;" id="logoutbutton" onclick="ButtonLOGOUT()">Logout</button>
+              <button id="exampleModal" style="margin-right: 20px;"  type="button" data-bs-toggle="modal" data-bs-target="#login-modal" class="btn btn-outline-success">Login</button>
+              <button style="margin-right: 20px;" type="button" class="btn btn-outline-success" id="regesterButton" data-bs-toggle="modal" data-bs-target="#rigester-modal" >Register</button>
+            </div>
+           </ul>
+
+
+
+
+
+
+
+           
+          
+          
+
+ 
+        </div>
+
+
+
+</nav>
+
+<div style="width: 50%; ; position: relative; left: -42px; margin: 50px; " id="post"> 
+                        <img src="" alt="" id="imagepost">
+                  <h1 >
+                
+                  </h1>
+                   </div>
+</div>
+
+</div>
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+      <div style ="display: flex; justify-content: center;" class="enafor">
+       <div class="col-9 " id="postx">
+       
+         
+            
+</div>
+
+</div>
+       <!-------------------------------___________________________________________________________________-------------->   
+ <div style ="display: flex; justify-content: center; ">
+       <div class="aksour" id="Profaile" style="margin-bottom:80px ; width: 75%; " >
+<!--------------------------------------------------------Comments-------------------------------------------------------------------->
+       <div style=" padding: 10px; " id="Comments">
+        <div style="padding: 10px; display: flex; align-items: center; gap: 15PX;">
+        <img src="photos/aksour.webp" style="width: 35px; height: 35px; border-radius: 50%; ;" alt="">
+        <b>@gmailAksour</b>
+         </div>
+         <p style="font-weight: bold;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi, ex culpa!</p>
+       </div>
+
+    
+
+   <div class="realmadrid"></div>
+           
+    </div>
+  </div>
+   </div>
+    <!--MODELLLLLLLLLLLLLLLL -///////////////////////////////////--////////////Navigtion Bar ////////----////////////////////////////////////////////////////////--////////------>
+
+       <script src="mainLogic.js"></script>
+       <script src="js.js"></script>
+       <script src="index.html"></script>
+  <script>
+    setupUI()
+  </script>
+</body>
+</html>

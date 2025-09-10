@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cc.css">
+    <title>Profailehtml</title>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+<a href=""></a>
+    <style>
+
+      body{
+
+              
+ 
+
+               background:#666769ab;
+      }
+    </style>
+</head>
+<body>
+    <div id="ShowLoader" style="position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 9999; display: flex; 
+   justify-content: center; align-items: center; background-color: gray;  width: 100px; height: 100px; margin: auto auto; border-radius: 25px; opacity: 0.8;
+    visibility: hidden;">   
+   <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+</div>
+
+
+<div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel" >LOGIN</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">UserName</label>
+            <input type="email" class="form-control" id="username-input"  autocomplete="username">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label" >Password</label>
+            <input type="password" class="form-control" id="password-input" autocomplete ="current-password" value=" "></input>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="Login-modal">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!--MODELLLLLLLLLLLLLLLL -///////////////////////////////////--////////////regster MODEL////////----////////////////////////////////////////////////////////--////////------>
+<div class="modal fade" id="rigester-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel" >Register A New User</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Name</label>
+            <input type="email" class="form-control" id="Register-name-input"  autocomplete="username">
+          </div>
+            <label for="recipient-name" class="col-form-label">UserName</label>
+            <input type="email" class="form-control" id="Register-Username-input"  autocomplete="username">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label" >Password</label>
+            <input type="password" class="form-control" id="Register-password-input" autocomplete ="current-password"></input>
+          </div>
+           <div class="mb-3">
+            <label for="message-text" class="col-form-label" >Image</label>
+            <input type="file" class="form-control" id="Register-image-input" autocomplete ="current-password"></input>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="Login-modal" onclick="RegisterName()">Register</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--MODELLLLLLLLLLLLLLLL -///////////////////////////////////--////////////Register MODEL////////----////////////////////////////////////////////////////////--////////------>
+
+
+         
+<!-----///////////------------//////////////////////////////////////////Delete modal///////////////////////////////////////////////////////////////////--------->
+<div class="modal fade" id="Delete-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel" >Are You Sure You Want Delete The Post? <span id="DeleteID"></span></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        
+      </div>
+      <div class="modal-body">
+       <input type="hidden" id="deleteModelvalue" value="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="Login-modal" onclick="ConfirmDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+  
+</div>
+        <input type="hidden" id="input-id-post" value = "">  
+<!-----///////////------------///////////////////////////////////////delete//////////////////////////////////////////////////////////////////////--------->
+ 
+
+
+
+
+  <!--NAVIGTION BAR CONT-->
+    <div class="container">
+      <div style ="display: flex; justify-content: center;">
+       <div class="col-9">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary shadow" style="border-radius: 7px;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">AksourHoucine</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        </li>        
+        <li class="nav-item">
+          <a class="nav-link" onclick="ProfileCliikd()" style="cursor: pointer;">Profaile</a>
+        </li>
+        <div style=" position: absolute; right: 0px; display: flex; align-items: center;" id="loginresester">
+          <div style=" display: flex; align-items: center; gap: 10px; margin-right: 20px;" class="MamaLove">
+              <img src="photos/hhh.jpg" alt="" style="width: 38px; height: 38px; border-radius: 50%;position: relative; bottom: 3px;" id="image-input-aksdsour">
+              <h6 style="font-weight: bold; font-size: 18px;" id="username">Aksourhoucine</h6>
+
+          </div>
+            <button class="btn btn-outline-danger" style="visibility:hidden; position: absolute; right: 20px ;" id="logoutbutton" onclick="ButtonLOGOUT()">Logout</button>
+              <button id="exampleModal" style="margin-right: 20px;"  type="button" data-bs-toggle="modal" data-bs-target="#login-modal" class="btn btn-outline-success">Login</button>
+              <button style="margin-right: 20px;" type="button" class="btn btn-outline-success" id="regesterButton" data-bs-toggle="modal" data-bs-target="#rigester-modal" >Register</button>
+            </div>
+           </ul>
+  </div>
+</nav>
+</div>
+</div>
+    </div>
+ <!--NAVIGTION BAR CONT-->
+
+ <!--MAIN CONTENT BAR CONT-->
+ 
+<!--MODELLLLLLLLLLLLLLLL -///////////////////////////////////--////////////Create A new Post MODEL////////----////////////////////////////////////////////////////////--////////------>
+
+<div class="modal fade" id="create-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="Create-new-post" >Create A New Post </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"> Title</label>
+            <input type="text" class="form-control" id="Create-New-Title-Input"autocomplete="username">
+          </div>
+          <label for="">Body</label>
+           <textarea name="" id="Create-Body-textarea" style="width: 100%; height: 100px; border-color: gray; border-radius: 7px; resize: none;">
+                  
+           </textarea>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label" >Image</label>
+            <input type="file" class="form-control" id="Create-New-Image" autocomplete ="current-password"></input>
+          </div> 
+        </form>
+      </div> 
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="houssinaksour" onclick="CreateNewPostCliked()">Create</button>
+      </div>
+    </div> 
+  </div>
+</div>
+<!--MODELLLLLLLLLLLLLLLL -///////////////////////////////////--////////////Create A new Post MODEL////////----////////////////////////////////////////////////////////--////////------>
+
+  <div class="container " style="height: 1000px;">
+
+  <!--post BAR CONT-->
+  
+     <div class="d-flex justify-content-center" style="margin-top: 40px;">
+        <div class="col-9">
+
+            <div class="card" style="margin-top: 50px; ; " >
+      
+           <div class="card-body shadow"  style = "cursor : pointer">
+            <div class="row">
+                     
+              <!--UserImage-->
+              <div class="colm-1">
+                 <img  id="image" src="./photos/aksour.webp" alt="" style="width: 125px; height: 125px;
+                    padding: 10px; position: relative;
+                     left: 20px;
+                      top: 12px; border-radius: 50%;">
+                       </div>
+                    
+                      <div class="colm2" style="display: flex; flex-direction: column; justify-content: space-evenly; font-weight:900;
+                       position: relative; right:120px; white-space:nowrap;
+                      ">
+                         <p  class="perfect" id="email-info">
+                          houssinaba@gmail.com
+                         </p>
+                         <p class="perfect" id="name-info">
+                            houssin
+                         </p>
+                         <p class="perfect" id="username-info">
+                          houssin1996
+                         </p>
+                      </div>
+                      
+                     <div class="number" style=" display: flex; flex-direction: column;
+                     position: relative; top: -20px; font-size:60px;font-weight: 0;">
+                     <div style="display: flex; gap:10px;">
+                      <span  id="posts">0</span><p style="font-size: 20px; position: relative; top: 50px; color:gray;">Posts</p>
+                     </div>
+                      <div style="display: flex; gap:10px;">  
+                        <span style="font-weight: 400;" id="comment">0</span><p style="font-size: 20px; position: relative; top: 50px; color:gray;">Comments</p>
+                      </div>
+                     
+                     </div>
+
+            </div>
+            
+      </div>  
+           
+   </div> 
+    
+     <div class="roww">
+       <h1 style="position: relative; top: 40px;" > <span id="name-info-Aksour">Profaile</span>   Post</h1>    
+       </div>
+
+         
+    
+
+
+          <div class="colom" id="colome">
+          <div class="card" style="margin-top: 50px;">
+      <div class="card-header" style="display: flex;  align-items: center; gap: 10px; ">
+      <img src="photos/aksour.webp" alt="" style="   width: 40px; height: 40px; ;">
+    
+      <b style="font-size: 20px; font-weight: bold ; ">houssinaksour</b>
+             <div id=""></div>
+           
+            </div>
+         
+      
+
+      <div class="card-body shadow" onclick = "PostClicked()" style = "cursor : pointer">
+        <img src="photos/hhh.jpg" alt="" style="width: 100%;">
+         <h6  style="color: rgb(131, 129, 129); margin-top: 5px;"></h6>
+         <h5>houssinaksouris illiziand</h5>
+          <p style="font-weight: normal;">illizito walcome
+  
+         </p>
+            
+            <hr>
+            <div>
+
+                <span style="font-weight: 400;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16" style="margin-right: 10px;">
+                       <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+                      </svg>
+                     
+                </span>
+            </div>    
+            </div>
+       
+     </div>
+      </div>
+     </div> 
+     </div> 
+                <div class="alert" style="position: absolutea; z-index: 999;">
+   <div class="aksour" style=>
+  <b>التسجيل الدخول بنجاح</b>
+ </div>
+       
+<div class="x">
+  <b>تم التسجيل الخروج  بنجاح</b>
+ </div>
+ <div class="s">
+    
+ </div>
+</div>   
+          
+ </div> 
+
+      <script src="mainlogic.js"></script>
+      <script src="Profaileaksour.js"></script>
+         
+     
+      
+</body>
+</html>
